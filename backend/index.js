@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+var cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
@@ -24,44 +25,36 @@ mongoose.connect(
 )
 
 //middlewares
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
+// test route
 app.get('/', (req, res) => {
     res.json("gym-e-commerce-app");
 })
 
-app.post('/addUser', (req, res) => {
-    let user = new User();
-    user.name = req.body.name;
-    user.email = req.body.email;
-    user.password = req.body.password;
-
-    user.save(err => {
-        if(err){
-            res.json(err);
-        } else {
-            res.json("successfully saved");
-        }
-    })
-
-})
 
 // require routes
 const productRoutes = require('./routes/product');
 const categoryRoutes = require('./routes/category');
 const ownerRoutes = require('./routes/owner');
+const userRoutes = require('./routes/auth');
+const reviewRoutes = require('./routes/review');
+const addressRoutes = require('./routes/address');
+
+app.use('/user', userRoutes);
 app.use('/category', categoryRoutes);
 app.use('/product', productRoutes);
 app.use('/owner', ownerRoutes);
+app.use('/review', reviewRoutes);
+app.use('/address', addressRoutes);
 
 
-
-
-app.listen(3000, err => {
+app.listen(5000, err => {
     if(err){
         console.log(err);
     }
-    else console.log('server running on port 3000');
+    else console.log('server running on port 5000');
 })

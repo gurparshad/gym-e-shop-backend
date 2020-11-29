@@ -8,7 +8,10 @@ router.post("/addProduct", async (req, res) => {
         product.title = req.body.title;
         product.description = req.body.description;
         product.photo = req.body.photo;
+        product.price = req.body.price;
         product.stockQuantity = req.body.stockQuantity;
+        product.owner = req.body.ownerId;
+        product.category = req.body.categoryId
 
         await product.save();
 
