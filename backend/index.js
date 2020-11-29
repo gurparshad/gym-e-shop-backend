@@ -43,6 +43,8 @@ const ownerRoutes = require('./routes/owner');
 const userRoutes = require('./routes/auth');
 const reviewRoutes = require('./routes/review');
 const addressRoutes = require('./routes/address');
+const paymentRoutes = require('./routes/payment');
+const orderRoutes = require('./routes/order');
 
 app.use('/user', userRoutes);
 app.use('/category', categoryRoutes);
@@ -50,6 +52,8 @@ app.use('/product', productRoutes);
 app.use('/owner', ownerRoutes);
 app.use('/review', reviewRoutes);
 app.use('/address', addressRoutes);
+app.use('/payment', paymentRoutes);
+app.use('/order',orderRoutes)
 
 
 app.listen(5000, err => {
