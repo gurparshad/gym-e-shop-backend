@@ -46,6 +46,7 @@ const reviewRoutes = require('./routes/review');
 const addressRoutes = require('./routes/address');
 const paymentRoutes = require('./routes/payment');
 const orderRoutes = require('./routes/order');
+const searchRoutes = require('./routes/search');
 
 app.use('/user', userRoutes);
 app.use('/category', categoryRoutes);
@@ -55,7 +56,7 @@ app.use('/review', reviewRoutes);
 app.use('/address', addressRoutes);
 app.use('/payment', paymentRoutes);
 app.use('/order',orderRoutes)
-
+app.use('/search',searchRoutes);
 
 app.listen(5000, err => {
     if(err){
