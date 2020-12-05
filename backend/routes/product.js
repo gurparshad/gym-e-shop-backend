@@ -72,6 +72,22 @@ router.get("/getProduct/:id", async (req, res) => {
     }
 })
 
+// get all products of single Category
+router.get("/getAllProducts/:categoryId", async(req, res) => {
+    try{
+        let products = await Product.find({category: req.params.categoryId});
+        res.json({
+            success: true,
+            products: products
+        })
+    }catch(err){
+        res.status(500).json({
+            sucess: false,
+            message: err.message
+        });
+    }
+})
+
 // update a product
 router.put('/updateProduct/:id', async (req, res) => {
     try{

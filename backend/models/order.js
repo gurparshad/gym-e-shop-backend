@@ -4,11 +4,14 @@ const deepPopulate = require("mongoose-deep-populate")(mongoose);
 
 const OrderSchema = new Schema({
     owner: { type: Schema.Types.ObjectId, ref: "User"},
-    products: [{
-        productId: { type: Schema.Types.ObjectId, ref: "Product"},
+    products: [
+        {
+            prodId: { type: Schema.Types.ObjectId, ref: "Product"},
         quantity: Number,
-        price: Number
-    }],
+        price: Number,
+        
+    }
+],
 });
 
 OrderSchema.plugin(deepPopulate);

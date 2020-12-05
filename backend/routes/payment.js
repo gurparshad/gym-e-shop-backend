@@ -27,7 +27,7 @@ router.post("/makePayment",verifyToken, async(req,res) => {
 
         cart.map(product => {
             order.products.push({
-                productID: product._id,
+                prodId: product._id,
                 quantity: parseInt(product.quantity),
                 price: product.price
             });
