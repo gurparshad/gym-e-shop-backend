@@ -10,7 +10,7 @@ const User = require('./models/user');
 dotenv.config();
 
 const app = express();
-
+const PORT = process.env.PORT || 5000;
 // connect with mongo
 mongoose.connect(
     process.env.DATABASE,
@@ -58,7 +58,7 @@ app.use('/payment', paymentRoutes);
 app.use('/order',orderRoutes)
 app.use('/search',searchRoutes);
 
-app.listen(5000, err => {
+app.listen(PORT, err => {
     if(err){
         console.log(err);
     }
